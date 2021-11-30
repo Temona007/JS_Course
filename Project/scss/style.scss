@@ -1,0 +1,424 @@
+@import 'vars';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-accent, serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    outline: none;
+    border: none;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 56px;
+    line-height: 60px;
+    text-align: center;
+    color: $color-accent;
+}
+
+.header {
+    padding-top: 20px;
+
+    &__inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        color: $color-accent;
+    }
+
+    &__logo {
+        margin-right: 100px;
+    }
+
+    &__menu {
+        display: flex;
+        align-self: flex-end;
+        margin-right: 160px;
+
+        &-item {
+            font-size: 16px;
+            margin-right: 50px;
+            position: relative;
+            transition: all .5s;
+
+            &:hover {
+                color: lighten($color-accent, 20%);
+            }
+
+            &:hover::before {
+                content: "";
+
+                position: absolute;
+                left: 65%;
+                top: -20px;
+                width: 10px;
+                height: 6px;
+
+                background-image: url('../img/header/menu-arrow.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            &:last-child {
+                margin-right: 0px;
+            }
+        }
+    }
+
+    &__phone {
+        margin-right: 35px;
+    }
+
+    &__btn {
+        font-size: 16px;
+        color: #fff;
+        padding: 10px 20px;
+
+        border-radius: 30px;
+        background-color: #3751FF;
+        transition: background-color .3s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken(#3751FF, 15%);
+        }
+    }
+}
+
+.hero {
+    color: $color-accent;
+    position: relative;
+
+    &__inner {
+        padding-top: 140px;
+        padding-bottom: 20px;
+        text-align: center;
+        position: relative;
+
+        &-title {
+            margin-bottom: 30px;
+        }
+
+        &-text {
+            font-size: 18px;
+            color: $color-text;
+            margin-bottom: 30px;
+        }
+
+        > button {
+            padding: 15px 40px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            font-size: 16px;
+            transition: all .3s;
+        }
+
+        > button:hover {
+            cursor: pointer;
+        }
+
+        &-btn {
+            color: $color-text;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+            margin-right: 20px;
+
+            &:hover {
+                background-color: #3751FF;
+                color: #fff;
+            }
+
+            &:last-of-type {
+                margin-right: 0px;
+            }
+        }
+
+        &-img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 180px;
+        top: 0;
+        background: linear-gradient(180deg, rgba(242, 249, 255, 0.12) 0%, #F2F9FF 100%);
+    }
+
+}
+
+.logo {
+    padding: 50px 0;
+
+    &__inner {
+        text-align: center;
+
+        &-title {
+            color: $color-text;
+            opacity: 50%;
+
+            margin-bottom: 50px;
+        }
+
+        &-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &-item {
+            opacity: 60%;
+            transition: all .3s;
+
+            &:hover {
+                opacity: 100%;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.about {
+    padding-top: 100px;
+    padding: 100px 0 30px;
+
+    &__inner {
+        &-title {
+            margin-bottom: 35px;
+        }
+
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+    }
+
+    &__content {
+
+        &-left {
+            margin-right: 50px;
+            position: relative;
+
+            > img {
+                display: block;
+            }
+        }
+        
+        &-right {
+            width: 33%;
+            position: relative;
+            right: 0px;
+        }
+
+        &-list {
+            margin-top: 110px;
+        }
+
+        &-item{
+            display: flex;
+            position: relative;
+            margin-bottom: 40px;
+
+            > img {
+                display: block;
+                align-self: flex-start;
+                margin-right: 45px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+
+                left: 0;
+                right: 0;
+                bottom: 0;
+                height: 1px;
+                border-bottom: 1px solid rgba(69, 88, 128, 0.2);
+
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+            &:last-child::after {
+                border: none;
+            }
+
+        }
+
+        &-title {
+            font-size: 22px;
+            color: $color-accent;
+            margin-bottom: 30px;
+        }
+
+        &-text {
+            font-size: 18px;
+            color: $color-accent;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+.portfolio {
+    padding-top: 140px;
+    padding-bottom: 575px;
+    background-color: #FFF9EA;
+
+    background-image: url('../img/portfolio/portfolio-bg.png');
+    background-repeat: no-repeat;
+    background-position: center bottom -195px;
+
+    &__inner {
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: 40px;
+    }
+
+    &__text {
+        color: $color-text;
+        font-size: 21px;
+        line-height: 30px;
+        margin-bottom: 40px;
+    }
+
+    &__buy-btn {
+        font-size: 16px;
+        padding: 15px 40px;
+        color: #fff;
+
+        background-color: #3751FF;
+        border-radius: 30px;
+        transition: all .3s;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken(#3751FF, 15%);
+        }
+    }
+}
+
+.test {
+    padding-top: 230px;
+    padding-bottom: 150px;
+
+    &__list {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        border: 1px solid rgba(69, 88, 128, 0.2);
+        border-radius: 4px;
+
+        text-align: center;
+        padding: 40px 35px 20px;
+        max-width: 32%;
+
+        &-text {
+            text-align: left;
+            font-size: 18px;
+            line-height: 32px;
+            color: $color-text;
+
+            margin-bottom: 50px;
+        }
+
+        &-img {
+            margin-bottom: 25px;
+        }
+
+        &-name {
+            font-size: 22px;
+            line-height: 27px;
+            color: $color-accent;
+        }
+
+        &-company {
+            font-size: 18px;
+            line-height: 32px;
+            color: $color-text;
+        }
+    }
+
+}
+
+.cta {
+    background-color: #3751FF;
+    padding-top: 90px;
+    padding-bottom: 110px;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__text {
+        font-size: 48px;
+        line-height: 60px;
+        color: #FFFFFF;
+    }
+
+    &__btn {
+        text-align: right;
+
+        button {
+            display: inline-flex;
+            align-items: center;
+
+            padding: 15px 30px;
+            margin-bottom: 15px;
+            
+            border-radius: 30px;
+            background-color: #fff;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            img {
+                margin-right: 15px;
+            }
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 20px;
+            text-align: right;
+            color: #DFE0EB;
+
+            span {
+                color: #FED385;
+                cursor: pointer;
+            }
+        }
+    }
+}
