@@ -124,14 +124,14 @@ function filterMovie(arr, newArr) {
     // map
     var newArr = arr.map(function(item) {
         var obj = {
-           // director: item.Director, // Только я не понял почему при у меня вывелос 2 раза director (есои эта строка активная)
+            Director: item.Director, // Только я не понял почему при у меня вывелос 2 раза director (есои эта строка активная)
             imdbRating: item.imdbRating 
         }
         return obj;
     });
 
     // filter
-    var filtered = newArr.filter(item => item.Director = "Christopher Nolan");
+    var filtered = newArr.filter(item => item.Director == "Christopher Nolan");
 
     console.log(filtered);
     

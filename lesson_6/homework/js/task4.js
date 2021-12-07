@@ -127,8 +127,8 @@ function filterMovie(arr, newArr) {
         }
         return obj;
     });
-    return console.log(newArr);
+    return newArr;
 }
 
-filterMovie(watchList, resultArr);
+console.log(filterMovie(watchList, resultArr));
 
