@@ -1,0 +1,361 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	    <!-- Bootstrap CSS -->
+
+	    <!--
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		-->
+
+	    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	    <!--
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		-->
+
+	    <link rel="stylesheet" href="style.css">
+	    <script src="calculator.js"></script>
+
+
+	</head>
+
+	<body>
+
+		<section id="calculator">
+
+			<!-- <div id="block1" class="sticky-top"> -->
+			<div id="block1" class="sticky-top">
+				<h1 class="text-center"><span>AVVIR</span> Pricing Calculator</h1>
+				<div class="container">
+					<div class="row">
+						<div class="w-100 progress-inspect-calc-block"></div>
+						<div class="col text-center progress-pricing-calc">
+							<p class="progress-pricing-text text-left">Project Calculator</p>
+							<div class="form-group mobile-text-align">
+								<div id="form-text-1"></div>
+								<input id="project_feet"  oninput="avvirCalc();" name="project_feet" type="number" value="" placeholder="Project Square Footage">
+			                </div>
+						</div>
+
+						<div class="col text-center progress-pricing-calc">
+							<p class="progress-pricing-text" style="color: transparent;">P</p>
+							<div class="form-group text-center">
+								<div id="form-text-2"></div>
+									<select id="project_type" oninput="avvirCalc(); avvirCalcInspect();" name="project_type" class="form-control" onchange="showStyles(this)">
+					                    <option value="250">Single Family Detached-Medium Quality</option>
+					                    <option value="350">Apartment/Condominium-Mid Rise</option>
+					                    <option value="350">Single Story</option>
+					                    <option value="575">Mid-Rise</option>
+					                    <option value="650">High Rise</option>
+					                    <option value="350">Neighborhood Strip Center</option>
+					                    <option value="500">Regional Mall</option>
+					                    <option value="500">Three-Star Hotel</option>
+					                    <option value="650">Five-Star Hotel</option>
+					                    <option value="250">Warehouse-Regional Distribution</option>
+					                    <option value="250">Warehouse-Light Industrial</option>
+					                    <option value="650">Manufacturing-Tech Laboratory</option>
+					                    <option value="800">Acute Care Facility</option>
+					                    <option value="500">Medical Office Building</option>
+					                    <option value="650">Specialty Clinic</option>
+					                    <option value="250">Elementary School</option>
+					                    <option value="350" selected>Middle School</option>
+					                    <option value="350">High School</option>
+					                    <option value="575">Academic/Classroom</option>
+					                    <option value="800">Laboratory</option>
+					                    <option value="350">Administration</option>
+					                    <option value="350">Dormitory</option>
+					                    <option value="575">Gov't Adminstrative Buildings</option>
+					                    <option value="800">Museum/Performing Arts</option>
+					                    <option value="350">Recreation/Gymnasium</option>
+					                    <option value="575">Police Stations</option>
+					                    <option value="150">Below Grade-Multi-Level</option>
+					                    <option value="150">Above Grade-Multi-Level</option>
+				               		 </select>
+				              	</div>
+							 </div>
+						<div class="col text-center inspect-pricing-calc">
+							<p class="progress-pricing-text text-left">Snapshot Calculator</p>
+							<div class="form-group mobile-text-align">
+								<div id="form-text-3"></div>
+								<input id="scan_area" oninput="avvirCalcInspect(); avvirCalc();" name="scan_area" type="number" value="" placeholder="Scan Area Square Footage">
+								<select class="d-none" id="scan_tier" oninput="avvirCalcInspect(); avvirCalc();" name="scan_tier" class="form-control" onchange="">
+				                    <option value="1">Snapshot - 1 scan</option>
+				                    <!--
+				                    <option value="2" >Up to 4 scans</option> 
+				                    <option value="3">QA/QC - Custom Scan Plan</option>
+				                    -->
+				                </select>
+			                </div>
+							<p class="text-under-scan-area">Use if you intend to scan infrequently or only a portion of a project</p>
+						</div>
+						<div  class="col text-center progress-pricing-calc">
+							<div id="show_field_after_click">
+								<p class="total-ammount-text">Products Price</p>
+								<p id="project_price">$0</p>
+								<br>
+							</div>
+						</div>
+						<div class="col text-center progress-pricing-calc">
+							<p class="total-ammount-text ammount-second">Services Price</p>
+							<p id="service_price">$0</p>
+							<p class="monthly-text">Monthly</p>
+						</div>
+						<div class="w-100 progress-inspect-calc-block-2"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="block2">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-12 text-center">
+							<p class="card-block-title">Analysis Products</p>
+						</div>
+
+						<div class="col-md-6 col-lg-6">
+							<div class="row">
+								
+								<div class="col-md-6 col-lg-6 text-center" id="block_1">
+									<div class="btn-group" role="group">
+										<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" >
+										<label id="card-analysys-1-1" onclick="functionName();" class="btn btn-outline-primary" for="btnradio1">
+											<div class="card card-analysys" id="card-analysys-1">
+											<div class="card-body">
+												<h5 class="card-title">Progress</h5>
+												<p id="progress"> $0 </p>
+												<h6 class="card-subtitle"></h6>
+												<ul>
+													<li>Trade Progress vs Schedule   </li>
+													<li>Labor productivity</li>
+													<li>Project Progress vs Schedule</li>
+													<li>Critical Path Report</li>
+												</ul>
+											</div>
+											</div>
+										</label>
+
+									</div>
+								</div>
+
+								<div class="col-md-6 col-lg-6 text-center" id="block_2">
+
+									<div class="btn-group" role="group" >
+										<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+										<label id="card-analysys-2-2" class="btn btn-outline-primary" for="btnradio2">
+											<div class="card card-analysys" id="card-analysys-2">
+												<div class="card-body">
+												<h5 class="card-title">Progress 5D</h5>
+												<p id="progress_5d">$ 0 </p>
+												<h6 class="card-subtitle">Everything in Progress, plus</h6>
+												<ul>
+													<li>Earned Value Report</li>
+													<li>Financial Forecasting</li>
+													<li>Pay App Verification</li>
+												</ul>
+												</div>
+											</div>
+										</label>
+									  </div>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-6">
+							<div class="row">
+								<div class="col-md-6 col-lg-6 text-center" id="block_3">
+
+									<form >
+
+									<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+									  
+										<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+										<label id="card-analysys-3-3" class="btn btn-outline-primary" for="btnradio3">
+											<div class="card card-green card-analysys" id="card-analysys-3">
+												<div class="card-body">
+												<h5 class="card-title">Inspect</h5>
+												<p id="inspect"> $0 </p>
+												
+												<ul>
+													<li>Update as-built BIM</li>
+													<li>Rework Prevention</li>
+													<li>Issue Tracking</li>
+													<li>Field Reporting</li>
+													<li>Unlimited analysis of the scanned square footage</li>
+												</ul>
+												</div>
+											</div>
+										</label>
+									  </div>
+									
+									</div>
+									<div class="col-md-6 col-lg-6 text-center" id="block_4">
+
+										<div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+										
+											<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+											<label id="card-analysys-4-4" class="btn btn-outline-primary" for="btnradio4">
+												<div class="card card-green card-analysys" id="card-analysys-3">
+													<div class="card-body">
+													<h5 class="card-title">Inspect Snapshot</h5>
+													<p id="inspect_snapshot"> $0 </p>
+													<h6 class="card-subtitle">Everything in Inspect</h6>
+													<ul>
+														<li>One time analysis of the scanned square footage</li>
+													</ul>
+													</div>
+												</div>
+											</label>
+										</div>
+
+										</form>
+									</div>
+							</div>
+						</div>
+
+						<div class="col-12 text-center">
+							<p class="card-block-title">Reality Capture Services</p>
+						</div>
+
+						<div class="col-md-6 col-lg-6">
+							<div class="row">
+								<div class="col-lg-12 text-center">
+									<button id="card_onsite_1">
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">Basic</h5>
+											</div>
+											<div class="col-4">
+												<p id="photo_basic"> $0/month </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">Monthly Photo Walks</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+								<div class="col-lg-12  text-center">
+									<button id="card_onsite_2">
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">Pro</h5>
+											</div>
+											<div class="col-4">
+												<p id="photo_pro"> $0/month </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">Weekly Photo Walks</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+								<div class="col-lg-12 text-center center-el">
+									<button id="card_onsite_3">
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">Pro+</h5>
+											</div>
+											<div class="col-4">
+												<p id="photo_pro_plus"> $0/month </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">Daily Photo Walks</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-6 col-lg-6">
+							<div class="row">
+								<div class="col-lg-12 text-center">
+									<button id="scan_1_1">
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">Snapshot</h5>
+											</div>
+											<div class="col-4">
+												<p id="snapshot"> $0 </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">One time Scan</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+								<div class="col-lg-12 text-center">
+									<button id="scan_3_3">
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">QA/QC - Basic</h5>
+											</div>
+											<div class="col-4">
+												<p id="aq_qc_basic"> $0/month </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">Monthly Scans</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+								<div class="col-lg-12 text-center center-el">
+									<button id="scan_4_4"> 
+
+										<div class="row inline-elements">
+											<div class="col-4">
+												<h5 class="card-title">QA/QC - Pro</h5>
+											</div>
+											<div class="col-4">
+												<p id="aq_qc_pro"> $0/month </p>
+											</div>
+											<div class="col-4">
+												<h6 class="card-subtitle">Biweekly Scans</h6>
+											</div>
+										</div>
+									</button>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- NOT USED CAPTURE AND BIM BASE -->
+						<div class="col-md-6 text-center d-none">
+							<button id="card_found_1_1">
+								<div class="card found-1 card-found" id="card_found_1">
+								  <div class="card-body">
+								    <h5 class="card-title">BIM base</h5>
+								    <p id="bim_base"> $0 </p>
+								    <h4 id="included_1"></h4>
+								    <p class="card-text">Visualize your photos and scans against your BIM <br><br> Store and share your reality capture data.</p>
+								  </div>
+								</div>
+							</button>
+						</div>
+						<div class="col-md-6 text-center d-none">
+							<button id="card_found_2_2">
+								<div class="card found-2 card-found" id="card_found_2">
+								  <div class="card-body">
+								    <h5 class="card-title">Capture</h5>
+								    <p id="capture"> $0 </p>
+								    <h4 id="included_2"></h4>
+								    <p class="card-text">Visualize your photos and scans against your BIM <br><br> Store and share your reality capture data.</p>
+								  </div>
+								</div>
+							</button>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+		</section>
+		
+	</body>
+
+</html>
