@@ -20,7 +20,6 @@
 	var progress_5d_zero 	  = 0;
 	var inspect_final_zero    = 0;
 	var inspect_snapshot_zero = 0;
-	var product_price_sum     = 0;
 
 	document.getElementById("progress").innerHTML         = "$" + progress.toLocaleString("en-US");
 	document.getElementById("progress_5d").innerHTML      = "$" + progress_5d.toLocaleString("en-US");
@@ -47,7 +46,7 @@
 	}
 
 	// Result 
-	product_price_sum = progress_zero + progress_5d_zero + inspect_final_zero + inspect_snapshot_zero;
+	var product_price_sum = progress_zero + progress_5d_zero + inspect_final_zero + inspect_snapshot_zero;
 	document.getElementById("project_price").innerHTML = "$" + product_price_sum.toLocaleString("en-US");
 // }
 
